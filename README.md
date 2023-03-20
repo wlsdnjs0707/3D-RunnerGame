@@ -4,7 +4,7 @@
 ## - 기능 및 소개
 <img src="https://user-images.githubusercontent.com/86781939/226393913-6a1f9008-8c74-426c-846b-9da9d9d6314f.gif"  width="270" height="600" >
 
-   눈 굴리기 게임
+   # 눈 굴리기 게임
 
    1. 맵, 배경 이동
    2. 터치 & 드래그로 플레이어 이동
