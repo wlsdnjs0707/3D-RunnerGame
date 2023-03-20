@@ -15,7 +15,8 @@
 <img src="https://user-images.githubusercontent.com/86781939/226394234-18966f08-8a29-4d0b-b494-567c5a694633.gif">
    - 플레이어가 아닌 맵이 뒤쪽으로 이동.
    - 스테이지 프리팹중 랜덤으로 다음 스테이지 생성, 화면 밖으로 나간 스테이지 제거
-   
+<br/>
+
 ```python
 transform.position = new Vector3((((touchPoint.x * 9.0f) / 540) + 1), transform.position.y, transform.position.z);
 ```
