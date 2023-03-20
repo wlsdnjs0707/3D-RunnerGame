@@ -4,7 +4,7 @@
 ## - 기능 및 소개
 <img src="https://user-images.githubusercontent.com/86781939/226393913-6a1f9008-8c74-426c-846b-9da9d9d6314f.gif"  width="270" height="600" >
 
-눈 굴리기 게임
+   눈 굴리기 게임
 
    1. 맵, 배경 이동
    2. 터치 & 드래그로 플레이어 이동
@@ -20,7 +20,6 @@
 ```python
 transform.position = new Vector3((((touchPoint.x * 9.0f) / 540) + 1), transform.position.y, transform.position.z);
 ```
-
    - 화면과 게임의 좌표 비율을 계산하여 터치한 곳에 따라 플레이어 position 이동
 <br/><br/><br/>
 
