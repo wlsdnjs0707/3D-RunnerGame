@@ -20,6 +20,7 @@
 ```python
 transform.position = new Vector3((((touchPoint.x * 9.0f) / 540) + 1), transform.position.y, transform.position.z);
 ```
+
    - 화면과 게임의 좌표 비율을 계산하여 터치한 곳에 따라 플레이어 position 이동
 <br/><br/><br/>
 
