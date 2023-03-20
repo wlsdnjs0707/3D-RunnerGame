@@ -21,6 +21,8 @@
 transform.position = new Vector3((((touchPoint.x * 9.0f) / 540) + 1), transform.position.y, transform.position.z);
 ```
    - 화면과 게임의 좌표 비율을 계산하여 터치한 곳에 따라 플레이어 position 이동
+<br/><br/><br/>
+
    
 <img src="https://user-images.githubusercontent.com/86781939/226395843-aa6c9d65-28b9-484a-b0f5-25f58b659387.gif"  width="270" height="600" >
    - OnTriggerEnter 함수로 장애물과 충돌 감지, 충돌시 게임 종료
