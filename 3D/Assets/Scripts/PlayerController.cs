@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     // 회전
     private float rotateSpeed = 300.0f;
 
+    Vector3 offset;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,17 +57,14 @@ public class PlayerController : MonoBehaviour
             ballScale += Time.deltaTime * expandSpeed;
         }
 
+        // 공 회전
         transform.Rotate(Vector3.right * rotateSpeed * Time.deltaTime);
 
-        if (Application.isMobilePlatform)
-        {
-            OnMobilePlatform();
-        }
-        else
-        {
-            OnPCPlatform();
-        }
+    }
 
+    private void OnMouseDown()
+    {
+        offset = transform.position - MouseWorldPosition();
     }
 
     IEnumerator scoring()
@@ -77,54 +76,30 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnMobilePlatform()
+    private void OnMouseDrag()
     {
-        if (Input.touchCount == 0)
+
+        if (2.0f <= transform.position.x && transform.position.x <= 18.0f)
         {
-            return;
-        }
+            transform.position = new Vector3((MouseWorldPosition() + offset).x, transform.position.y, transform.position.z);
 
-        Touch touch = Input.GetTouch(0);
+            if (transform.position.x < 2.0f)
+            {
+                transform.position = new Vector3(2.0f, transform.position.y, transform.position.z);
+            }
 
-        if (touch.phase == TouchPhase.Moved)
-        {
-            touchPoint = touch.position;
-
-            OnDragX();
+            if (transform.position.x > 18.0f)
+            {
+                transform.position = new Vector3(18.0f, transform.position.y, transform.position.z);
+            }
         }
     }
 
-    private void OnPCPlatform()
+    Vector3 MouseWorldPosition()
     {
-        if (Input.GetMouseButton(0))
-        {
-            touchPoint = Input.mousePosition;
-
-            OnDragX();
-        }
-    }
-
-    private void OnDragX()
-    {
-        if(isGamePlay==false)
-        {
-            return;
-        }
-
-        // 화면 밖으로 못 나가게 제한
-        if (transform.position.x<1)
-        {
-            transform.position = new Vector3(1, transform.position.y, transform.position.z);
-        }
-        else if (transform.position.x>19)
-        {
-            transform.position = new Vector3(19, transform.position.y, transform.position.z);
-        }
-        else
-        {
-            // 화면과 게임 좌표 비율 계산
-            transform.position = new Vector3((((touchPoint.x * 9.0f) / 540) + 1), transform.position.y, transform.position.z);
-        }
+        var mouseScreenPos = Input.mousePosition;
+        mouseScreenPos.z = Camera.main.WorldToScreenPoint(transform.position).z;
+        return Camera.main.ScreenToWorldPoint(mouseScreenPos);
     }
 
     private void OnTriggerEnter(Collider other)
